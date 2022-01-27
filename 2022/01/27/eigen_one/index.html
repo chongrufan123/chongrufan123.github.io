@@ -6,26 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://aimafan.fans">
-  <title>LLC | 艾玛FAN</title>
+  <title>Eigen的介绍、安装与入门操作 | 艾玛FAN</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="未完成 本文详细介绍了LLC谐振变换器的组成，工作原理及其应用">
+  <meta name="description" content="本文介绍了eigen的安装，头文件库，还有一些入门的矩阵向量操作">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LLC">
-<meta property="og:url" content="http://aimafan.fans/2021/08/25/LLC/index.html">
+<meta property="og:title" content="Eigen的介绍、安装与入门操作">
+<meta property="og:url" content="http://aimafan.fans/2022/01/27/eigen_one/index.html">
 <meta property="og:site_name" content="艾玛FAN">
-<meta property="og:description" content="未完成 本文详细介绍了LLC谐振变换器的组成，工作原理及其应用">
+<meta property="og:description" content="本文介绍了eigen的安装，头文件库，还有一些入门的矩阵向量操作">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://aimafan.fans/assets/blogimg/napoleon4/1.jpg">
-<meta property="og:image" content="http://aimafan.fans/assets/blogimg/napoleon4/2.jpg">
-<meta property="og:image" content="http://aimafan.fans/assets/blogimg/napoleon4/3.jpg">
-<meta property="article:published_time" content="2021-08-25T12:54:19.000Z">
-<meta property="article:modified_time" content="2021-08-30T07:22:41.984Z">
+<meta property="article:published_time" content="2022-01-27T03:47:00.000Z">
+<meta property="article:modified_time" content="2022-01-27T10:13:04.608Z">
 <meta property="article:author" content="艾玛FAN">
-<meta property="article:tag" content="电力电子">
-<meta property="article:tag" content="电气">
-<meta property="article:tag" content="电磁转换">
+<meta property="article:tag" content="计算机">
+<meta property="article:tag" content="Eigen">
+<meta property="article:tag" content="SLAM">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://aimafan.fans/assets/blogimg/napoleon4/1.jpg">
   
     <link rel="alternative" href="/atom.xml" title="艾玛FAN" type="application/atom+xml">
   
@@ -182,22 +178,22 @@
           </div>
           <div id="js-content" class="content-ll">
             
-<article id="post-LLC" class="article article-type-post " itemscope itemprop="blogPost">
+<article id="post-eigen_one" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      LLC
+      Eigen的介绍、安装与入门操作
     </h1>
   
 
         
          
 
-<a href="/2021/08/25/LLC/" class="archive-article-date">
-  	<time datetime="2021-08-25T12:54:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-25</time>
+<a href="/2022/01/27/eigen_one/" class="archive-article-date">
+  	<time datetime="2022-01-27T03:47:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-27</time>
 </a>
                 <!-- 开始添加字数统计-->
         
@@ -206,63 +202,103 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <ul>
-<li><strong>未完成</strong><blockquote>
-<p>本文详细介绍了LLC谐振变换器的组成，工作原理及其应用</p>
+        <blockquote>
+<p>本文介绍了eigen的安装，头文件库，还有一些入门的矩阵向量操作</p>
 </blockquote>
-</li>
-</ul>
 <span id="more"></span>
-
 <ul>
-<li><strong>本文主要基于参考资料，然后经过本人的理解最后成文，如果有任何错误的地方，盖本人学术不精所致，请友善的指出</strong></li>
-<li><strong>本文配图主要来源于网络与参考资料，如有侵权，请联系我</strong></li>
-<li><strong>全文约字</strong></li>
+<li><strong>全文大约1200字</strong><blockquote>
+<p>参考内容：<a target="_blank" rel="noopener" href="http://eigen.tuxfamily.org/dox-devel/modules.html">Eigen tutorial</a><br>操作环境：Ubuntu server 20.04</p>
+</blockquote>
+<h2 id="1-Eigen是什么"><a href="#1-Eigen是什么" class="headerlink" title="1 Eigen是什么"></a>1 Eigen是什么</h2>Eigen是一个C++语言中的开源的模板库，支持线性代数的运算，包括向量运算，矩阵运算，数值分析等相关算法。因为eigen只包含头文件，所以使用的话不需要进行编译，只需要在cpp文件开头写<code>#include &lt;Eigen&gt;</code>就好。</li>
 </ul>
-<p>众所周知，对于一个电子设备来说，比如像是一台计算机，它若想要自动的实现某一些功能，主要就是将人为的给他的指令转换为0，1指令，0代表着电路的断路，而1代表着电路的通路，从而可以实现从软件层次上对硬件系统的控制。但是像一些芯片其控制电压是比较大的，比如某一类芯片需要3.3V的电压的开通和关断去控制，而对于这种大电压的开通与关断控制起来是非常困难的，因为对于一般的I/O口（输入输出口）来说，他没有那么大的功率去推动这么大的电压变化，他可能最多只能推动几毫伏（mV，1000mV = 1V）的电压变化。那么为了让这几毫伏的电压变化推动几伏特的电压变化，就需要一个中间元件，也就是晶体管，现在常用的晶体管是场效应管（MOSFET）。如下图，G为栅极，D为漏极，S是源极。可以简单理解为，当G极通一个小电压时，D和S之间便可以导通，否则D，S之间是关断状态。关于晶体管的具体原理这里不详细说，具体可以参考<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/36475338/answer/1574671956">知乎：三极管的原理书上都讲不清楚，为什么能被制造出来？</a>。</p>
-<center>
-<img style="border-radius: 0.3125em;
-box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
-src="/assets/blogimg/napoleon4/1.jpg" width = "75%" alt=""/>
-<br>
-<div style="color:orange; border-bottom: 1px solid #d9d9d9;
-display: inline-block;
-color: #999;
-padding: 2px;">
-场效应管简化电路图
-</div>
-</center>
-
-<p>解决这个问题之后，随着社会的发展，又出现一个新的问题。就是当前社会，对于设备小型化和轻型化都逐渐提出了更高的要求，而开关电源的高频化可以有效的解决这些问题。主要是因为开关电源频率越高，像变压器这类磁性元件的尺寸就可以更小。但是高频的同时也会带来许多问题，其中一个非常大的问题就是功率损耗。因为一般开关器件（指晶体管等）控制开通和关断时并不能瞬间进行，而要经过一段时间的电压和电流的上升和下降。当晶体管关断的时候，D，S之间没有电流通过，但是会存在一个比较大的电压；当晶体管开通，D，S之间导通，有电流流过，而电压变为了0V。所以当晶体管从关断到开通的一瞬间，电压下降，电流上升，就会导致在这个过程中出现功率损耗，晶体管从开通到关断的一瞬间亦然。</p>
-<center>
-<img style="border-radius: 0.3125em;
-box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
-src="/assets/blogimg/napoleon4/2.jpg" width = "75%" alt=""/>
-<br>
-<div style="color:orange; border-bottom: 1px solid #d9d9d9;
-display: inline-block;
-color: #999;
-padding: 2px;">
-开通损耗与关断损耗
-</div>
-</center>
-
-<p>这时候就需要软开关技术，软开关技术有零电压开关（ZVS）和零电流开关（ZCS），这里只讲零电压开关技术。零电压开关也就是指在开关开通之前就让他的两端的电压变为0，这样开通损耗便可以降为0，但是关断损耗就无法避免了。</p>
-<center>
-<img style="border-radius: 0.3125em;
-box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
-src="/assets/blogimg/napoleon4/3.jpg" width = "75%" alt=""/>
-<br>
-<div style="color:orange; border-bottom: 1px solid #d9d9d9;
-display: inline-block;
-color: #999;
-padding: 2px;">
-零电压开关
-</div>
-</center>
-
-<p>通过LLC谐振电路可以实现零电压开关，从而降低高频电源带来的开关损耗。但是在LLC谐振电路之前，还有一个重要概念，那便是什么是谐振电路。</p>
-<p>对于一个电路来说，最基础的电器元件无非就这几种，电阻，电感，电容。其中电阻仅仅是在数量上对于电压和电流实现阻碍，并不会对电路的整体频率产生影响。而电感和电容则不同，他们属于储能元件，他们的电抗大小与电源频率大小密切相关。电感对于高频电流有抑制作用，而电容对于低频电流有抑制作用，所以当他们同时存在与一个电路中时，在低频阶段整个电路会呈现容性，增益大小（输出电压/输入电压）会随着频率的增大而增大，而在高频阶段整个电路会呈现感性，增益大小会随着频率的增大而减小。</p>
+<h2 id="2-如何安装eigen"><a href="#2-如何安装eigen" class="headerlink" title="2 如何安装eigen"></a>2 如何安装eigen</h2><p>本文只演示在ubuntu系统下eigen的安装过程，有两种安装方式</p>
+<h3 id="2-1-使用终端apt命令安装"><a href="#2-1-使用终端apt命令安装" class="headerlink" title="2.1 使用终端apt命令安装"></a>2.1 使用终端apt命令安装</h3><p>直接在apt软件包中安装</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install libeigen3-dev</span><br></pre></td></tr></table></figure>
+<p>这种安装方式有一个缺点，因为apt包更新比较慢，安装的版本可能不是最新版，那么之后的一些依赖于eigen的库可能没有办法使用(如Sophus库要求必须选用3.3以上版本的eigen包)，可以使用指令来查看apt包中eigen的版本</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt show libeigen3-dev</span><br></pre></td></tr></table></figure>
+<h3 id="2-2-手动编译安装"><a href="#2-2-手动编译安装" class="headerlink" title="2.2 手动编译安装"></a>2.2 手动编译安装</h3><p>在<a target="_blank" rel="noopener" href="http://eigen.tuxfamily.org/index.php?title=Main_Page">官网</a>中下载最新版安装包，然后提取到某处，之后进入提取出来的文件夹，在终端中打开，然后进行编译</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mkdir build</span><br><span class="line"><span class="built_in">cd</span> build</span><br><span class="line">cmake ..</span><br><span class="line">sudo install make</span><br></pre></td></tr></table></figure>
+<p>最后检查是否安装成功，可以直接在编辑器中输入</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;Eigen&gt;</span></span></span><br></pre></td></tr></table></figure>
+<p>编译通过即安装成功。</p>
+<h2 id="3-模块与头文件"><a href="#3-模块与头文件" class="headerlink" title="3 模块与头文件"></a>3 模块与头文件</h2><table>
+<thead>
+<tr>
+<th>模块</th>
+<th>头文件</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Core</td>
+<td><code>\#include &lt;Eigen/Core&gt;</code></td>
+<td>矩阵和数组(向量)类(Matrix, Array)，基于线性代数还有数组操作</td>
+</tr>
+<tr>
+<td>Geometry</td>
+<td><code>\#include &lt;Eigen/Geometry&gt;</code></td>
+<td>变换，平移，缩放，2D旋转和3D旋转(包括四元数和角轴)</td>
+</tr>
+<tr>
+<td>LU</td>
+<td><code>#include &lt;Eigen/LU&gt;</code></td>
+<td>使用求解器进行求逆，行列式，LU分解操作</td>
+</tr>
+<tr>
+<td>Cholesky</td>
+<td><code>#include &lt;Eigen/Cholesky&gt;</code></td>
+<td>使用求解器进行LLT, LT, Cholesky分解</td>
+</tr>
+<tr>
+<td>Householder</td>
+<td><code>#include &lt;Eigen/Householder</code></td>
+<td>Householder变换；被用作几个线性代数模块</td>
+</tr>
+<tr>
+<td>SVD</td>
+<td><code>#include &lt;Eigen/SVD&gt;</code></td>
+<td>SVD分解与最小二乘求解器</td>
+</tr>
+<tr>
+<td>QR</td>
+<td><code>#include &lt;Eigen/QR&gt;</code></td>
+<td>QR分解</td>
+</tr>
+<tr>
+<td>Eigenvalues</td>
+<td><code>#include &lt;Eigen/Eigenvalues&gt;</code></td>
+<td>特征值，特征向量分解</td>
+</tr>
+<tr>
+<td>Sparse</td>
+<td><code>#include &lt;Eigen/Sparse&gt;</code></td>
+<td>稀疏矩阵存储以及相关的基本线性代数</td>
+</tr>
+<tr>
+<td>Dense</td>
+<td><code>#include &lt;Eigen/Dense&gt;</code></td>
+<td>包括Core, Geometry, LU, Cholesky, SVD, QR, Eigenvalues的头文件</td>
+</tr>
+<tr>
+<td>Eigen</td>
+<td><code>#include &lt;Eigen/Eigen&gt;</code></td>
+<td>包括Dense和Sparse的头文件</td>
+</tr>
+</tbody></table>
+<h2 id="4-实例演示"><a href="#4-实例演示" class="headerlink" title="4 实例演示"></a>4 实例演示</h2><h3 id="4-1-例一：矩阵"><a href="#4-1-例一：矩阵" class="headerlink" title="4.1 例一：矩阵"></a>4.1 例一：矩阵</h3><h4 id="4-1-1-定义并输出一个矩阵"><a href="#4-1-1-定义并输出一个矩阵" class="headerlink" title="4.1.1 定义并输出一个矩阵"></a>4.1.1 定义并输出一个矩阵</h4><p>在编辑器中输入以下程序</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// hello_eigen.cpp</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;eigen3/Eigen/Dense&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> Eigen::MatrixXd;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="function">MatrixXd <span class="title">m</span><span class="params">(<span class="number">2</span>,<span class="number">2</span>)</span></span>;</span><br><span class="line">	<span class="built_in">m</span>(<span class="number">0</span>,<span class="number">0</span>) = <span class="number">3</span>;</span><br><span class="line">	<span class="built_in">m</span>(<span class="number">1</span>,<span class="number">0</span>) = <span class="number">2.5</span>;</span><br><span class="line">	<span class="built_in">m</span>(<span class="number">0</span>,<span class="number">1</span>) = <span class="number">-1</span>;</span><br><span class="line">	<span class="built_in">m</span>(<span class="number">1</span>,<span class="number">1</span>) = <span class="built_in">m</span>(<span class="number">1</span>,<span class="number">0</span>) + <span class="built_in">m</span>(<span class="number">0</span>,<span class="number">1</span>);</span><br><span class="line">	std::cout &lt;&lt; m &lt;&lt; std::endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="4-1-2-编译并运行"><a href="#4-1-2-编译并运行" class="headerlink" title="4.1.2 编译并运行"></a>4.1.2 编译并运行</h4><p>在终端输入编译指令，并运行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">g++ hello_eigen.cpp -o hello_eigen</span><br><span class="line">./hello_eigen</span><br></pre></td></tr></table></figure>
+<p>得到输出结果，如果不出意外的话应该是</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">3 -1</span><br><span class="line">2.5 1.5</span><br></pre></td></tr></table></figure>
+<h4 id="4-1-3-解释这个程序"><a href="#4-1-3-解释这个程序" class="headerlink" title="4.1.3 解释这个程序"></a>4.1.3 解释这个程序</h4><p>Eigen头文件定义了许多类型，但是对于简单的应用程序，只使用MatrixXd类型可能就足够了。MatrixXd表示任意大小的矩阵(对应MatrixXd中的X)，然后矩阵中的每个元素都是双精度的(对应MatrixXd中的d)。<br>其他的一些类型也大同小异，基本可以通过类型名来进行判断，如MatrixXf, Matrix3D什么的，分别表示任意大小的单精度型的矩阵和三行三列的双精度型的方阵。当然也可以直接通过Matrix来进行定义，如<code>Matrix &lt;doubel, 3, 3&gt; matrix_3d;</code><br>对于以上的程序来说，首先包含了头文件Dense，基本包含了矩阵的基本操作，之后定义了一个2*2的矩阵，并分别进行赋值，最后输出。</p>
+<h3 id="4-2-例二：矩阵和向量"><a href="#4-2-例二：矩阵和向量" class="headerlink" title="4.2 例二：矩阵和向量"></a>4.2 例二：矩阵和向量</h3><h4 id="4-2-1-矩阵和向量"><a href="#4-2-1-矩阵和向量" class="headerlink" title="4.2.1 矩阵和向量"></a>4.2.1 矩阵和向量</h4><p>在编辑器中输入如下程序</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;Eigen/Dense&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> Eigen::MatrixXd;</span><br><span class="line"><span class="keyword">using</span> Eigen::VectorXd;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	MatrixXd m = MatrixXd::<span class="built_in">Random</span>(<span class="number">3</span>,<span class="number">3</span>);</span><br><span class="line">	m = (m + MatrixXd::<span class="built_in">Constant</span>(<span class="number">3</span>,<span class="number">3</span>,<span class="number">1.2</span>)) * <span class="number">50</span>;</span><br><span class="line">	std::cout &lt;&lt; <span class="string">&quot;m =&quot;</span> &lt;&lt; std::endl &lt;&lt; m &lt;&lt; std::endl;</span><br><span class="line">	<span class="function">VectorXd <span class="title">v</span><span class="params">(<span class="number">3</span>)</span></span>;</span><br><span class="line">	v &lt;&lt; <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>;</span><br><span class="line">	std::cout &lt;&lt; <span class="string">&quot;m * v =&quot;</span> &lt;&lt; std::endl &lt;&lt; m * v &lt;&lt; std::endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="4-2-2-编译并运行"><a href="#4-2-2-编译并运行" class="headerlink" title="4.2.2 编译并运行"></a>4.2.2 编译并运行</h4><p>与上述指令一样，进行编译并运行，得到输出结果</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">m =</span><br><span class="line">94.0188  89.844 43.5223</span><br><span class="line">49.4383 101.165  86.823</span><br><span class="line">88.3099 29.7551 37.7775</span><br><span class="line"></span><br><span class="line">m * v =</span><br><span class="line">404.274</span><br><span class="line">512.237</span><br><span class="line">261.153</span><br></pre></td></tr></table></figure>
+<h4 id="4-2-3-解释这个程序"><a href="#4-2-3-解释这个程序" class="headerlink" title="4.2.3 解释这个程序"></a>4.2.3 解释这个程序</h4><p>这个例子中首先定义了一个随机的3*3的双精度的矩阵，这个随机的数字是在-1到1之间，然后将这个矩阵加上一个所有元素都为1.2的3*3的常数矩阵，这样输出出来的数据便是m，输出出来。<br>之后又定义了一个三维的双精度向量，使用VectorXd类型，与MatrixXd类型相似，X表示随机定义向量的维度，d表示元素为双精度的。之后将矩阵和向量进行相乘，得出最终结果。矩阵和向量的乘法在线性代数中有学习，这里就不多赘述了，这里的乘法是利用了C++的重载的概念，可以用一种方便的方法去完成这个计算。</p>
+<h2 id="5-总结"><a href="#5-总结" class="headerlink" title="5 总结"></a>5 总结</h2><p>本文介绍了Eigen的基本介绍，安装，头文件介绍，还有一些简单的程序介绍，之后的话会有更多的关于Eigen的更加全面的介绍。</p>
 
       
       
@@ -292,7 +328,7 @@ padding: 2px;">
     
     <br>
     <strong>本文链接：</strong>
-    http://aimafan.fans/2021/08/25/LLC/
+    http://aimafan.fans/2022/01/27/eigen_one/
     <br>
     <strong>版权声明：</strong>
     本作品采用
@@ -314,15 +350,15 @@ padding: 2px;">
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">电力电子</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">计算机</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">电气</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Eigen</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">电磁转换</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">SLAM</a>
         		</li>
       		
 		</ul>
@@ -378,7 +414,7 @@ padding: 2px;">
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://chongrufan123.github.io/2021/08/25/LLC/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://chongrufan123.github.io/2022/01/27/eigen_one/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -392,18 +428,9 @@ padding: 2px;">
   
 <nav id="article-nav">
   
-    <a href="/2021/08/30/gaoshu/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          考研笔记
-        
-      </div>
-    </a>
   
-  
-    <a href="/2021/08/24/napoleon4/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">拿破仑大帝(4)：意大利</div>
+    <a href="/2022/01/26/respberry-ubuntu/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">从零开始，在树莓派上安装ubuntu操作系统并进行配置</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -430,7 +457,7 @@ padding: 2px;">
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    目录，不存在的…
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Eigen%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-number">1.</span> <span class="toc-text">1 Eigen是什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%A6%82%E4%BD%95%E5%AE%89%E8%A3%85eigen"><span class="toc-number">2.</span> <span class="toc-text">2 如何安装eigen</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E4%BD%BF%E7%94%A8%E7%BB%88%E7%AB%AFapt%E5%91%BD%E4%BB%A4%E5%AE%89%E8%A3%85"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 使用终端apt命令安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E6%89%8B%E5%8A%A8%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 手动编译安装</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E6%A8%A1%E5%9D%97%E4%B8%8E%E5%A4%B4%E6%96%87%E4%BB%B6"><span class="toc-number">3.</span> <span class="toc-text">3 模块与头文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E5%AE%9E%E4%BE%8B%E6%BC%94%E7%A4%BA"><span class="toc-number">4.</span> <span class="toc-text">4 实例演示</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-%E4%BE%8B%E4%B8%80%EF%BC%9A%E7%9F%A9%E9%98%B5"><span class="toc-number">4.1.</span> <span class="toc-text">4.1 例一：矩阵</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1-1-%E5%AE%9A%E4%B9%89%E5%B9%B6%E8%BE%93%E5%87%BA%E4%B8%80%E4%B8%AA%E7%9F%A9%E9%98%B5"><span class="toc-number">4.1.1.</span> <span class="toc-text">4.1.1 定义并输出一个矩阵</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1-2-%E7%BC%96%E8%AF%91%E5%B9%B6%E8%BF%90%E8%A1%8C"><span class="toc-number">4.1.2.</span> <span class="toc-text">4.1.2 编译并运行</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1-3-%E8%A7%A3%E9%87%8A%E8%BF%99%E4%B8%AA%E7%A8%8B%E5%BA%8F"><span class="toc-number">4.1.3.</span> <span class="toc-text">4.1.3 解释这个程序</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-%E4%BE%8B%E4%BA%8C%EF%BC%9A%E7%9F%A9%E9%98%B5%E5%92%8C%E5%90%91%E9%87%8F"><span class="toc-number">4.2.</span> <span class="toc-text">4.2 例二：矩阵和向量</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-1-%E7%9F%A9%E9%98%B5%E5%92%8C%E5%90%91%E9%87%8F"><span class="toc-number">4.2.1.</span> <span class="toc-text">4.2.1 矩阵和向量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-2-%E7%BC%96%E8%AF%91%E5%B9%B6%E8%BF%90%E8%A1%8C"><span class="toc-number">4.2.2.</span> <span class="toc-text">4.2.2 编译并运行</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-3-%E8%A7%A3%E9%87%8A%E8%BF%99%E4%B8%AA%E7%A8%8B%E5%BA%8F"><span class="toc-number">4.2.3.</span> <span class="toc-text">4.2.3 解释这个程序</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E6%80%BB%E7%BB%93"><span class="toc-number">5.</span> <span class="toc-text">5 总结</span></a></li></ol>
                     </div>
                 </span>
             </div>
