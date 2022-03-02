@@ -18,9 +18,9 @@
 <meta property="article:published_time" content="2022-02-11T08:35:00.000Z">
 <meta property="article:modified_time" content="2022-02-11T10:05:13.485Z">
 <meta property="article:author" content="艾玛FAN">
-<meta property="article:tag" content="计算机">
 <meta property="article:tag" content="C++">
 <meta property="article:tag" content="库函数">
+<meta property="article:tag" content="计算机">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="艾玛FAN" type="application/atom+xml">
@@ -207,116 +207,115 @@
     <div class="article-entry" itemprop="articleBody">
       
         <blockquote>
-<p>本文主要对于C++中的cctype库和cstring库这两个处理字符与字符串的库中的常用函数进行总结。</p>
+<p>本文主要对于C++中的cctype库和cstring库这两个处理字符与字符串的库中的常用函数进行总结。 <span id="more"></span> - <strong>全文大约700字</strong></p>
 </blockquote>
-<span id="more"></span>
-<ul>
-<li><strong>全文大约700字</strong></li>
-</ul>
-<h2 id="cctype库"><a href="#cctype库" class="headerlink" title="cctype库"></a>cctype库</h2><p>cctype库是C++从C语言继承的一个与字符相关的，非常方便的函数软件包，可以简化确定字符是否是大写字母、数字、标点等诸如此类的工作，原型是在头文件cctype中定义的。</p>
+<h2 id="cctype库">cctype库</h2>
+<p>cctype库是C++从C语言继承的一个与字符相关的，非常方便的函数软件包，可以简化确定字符是否是大写字母、数字、标点等诸如此类的工作，原型是在头文件cctype中定义的。</p>
 <p>这些函数的返回是int型，但是可以很方便的转换成bool型。</p>
 <p>以下是对于cctype中的函数进行总结，主要列出一些常用的函数，可能会有部分函数没有列出，全部的函数的输入参数为char类型。</p>
 <table>
 <thead>
-<tr>
+<tr class="header">
 <th>函数名称</th>
 <th>返回为true的值</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr class="odd">
 <td>isalnum()</td>
 <td>字母或数字</td>
 </tr>
-<tr>
+<tr class="even">
 <td>isalpha()</td>
 <td>字母</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>iscntrl()</td>
 <td>控制字符</td>
 </tr>
-<tr>
+<tr class="even">
 <td>isdigit()</td>
 <td>数字(0~9)</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>isgraph()</td>
 <td>除了空格之外的打印字符</td>
 </tr>
-<tr>
+<tr class="even">
 <td>islower()</td>
 <td>小写字母</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>isprint()</td>
 <td>打印字符（包括空格）</td>
 </tr>
-<tr>
+<tr class="even">
 <td>ispunct()</td>
 <td>标点符号</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>isspace()</td>
 <td>标准空白字符(空格、进纸、换行符、回车、水平制表符、垂直制表符)</td>
 </tr>
-<tr>
+<tr class="even">
 <td>isupper()</td>
 <td>大写字母</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>isxdigit()</td>
-<td>十六进制数字(0<del>9, a</del>f或A~F)</td>
+<td>十六进制数字(0~9, a<sub>f或A</sub>F)</td>
 </tr>
-<tr>
+<tr class="even">
 <td>tolower()</td>
 <td>如果参数是大写字符，返回其小写，否则返回该参数</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>toupper()</td>
 <td>如果参数是小写字符，返回其大写，否则返回该参数</td>
 </tr>
-</tbody></table>
-<h2 id="cstring库"><a href="#cstring库" class="headerlink" title="cstring库"></a>cstring库</h2><p>cstring是一个用来处理char类型数组字符串的C风格的字符串库，其中的很多函数可以方便对于一个或多个字符串进行操作。</p>
+</tbody>
+</table>
+<h2 id="cstring库">cstring库</h2>
+<p>cstring是一个用来处理char类型数组字符串的C风格的字符串库，其中的很多函数可以方便对于一个或多个字符串进行操作。</p>
 <p>以下是对于cstring中的函数的一些总结，同样，主要列出常用的函数，默认其中的str1，str2为char[]类型，size为int类型。</p>
 <table>
 <thead>
-<tr>
+<tr class="header">
 <th>函数</th>
 <th>作用</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr class="odd">
 <td>strlen(str)</td>
 <td>返回一个char数组的长度</td>
 </tr>
-<tr>
+<tr class="even">
 <td>strcat(str1, str2)</td>
 <td>将后一个拼接到前一个数组中，并且返回拼接后的字符串</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>strncat(str1, str2, size)</td>
 <td>和strcat类似，多接收一个src的最大长度</td>
 </tr>
-<tr>
+<tr class="even">
 <td>strcpy(str1, const str2)</td>
 <td>将后一个字符串的内容复制到前一个</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>strncpy(str1, const str2, size)</td>
 <td>strcpy加入长度限制的版本</td>
 </tr>
-<tr>
+<tr class="even">
 <td>strcmp(str1, str2)</td>
 <td>前者大于后一个，返回大于0的数，前者小于后一个返回小于0的数，两者等于返回0</td>
 </tr>
-</tbody></table>
-<h3 id="C风格字符串的比较"><a href="#C风格字符串的比较" class="headerlink" title="C风格字符串的比较"></a>C风格字符串的比较</h3><p>以下写一写关于C风格字符串的比较的法则，作为<code>strcmp()</code>函数的补充。</p>
-<p>字符串的比较是通过顺序比较其中的字符来进行的，首先比较两个字符串的第一个字符，如果不相等比较结束，否则继续比较两者的下一个字符，直到某个字符串结束。这个比较是针对字符的ASCII编码进行比较，ASCII大的字符大，ASCII小的字符小。以下可以通过几个例子有一个更加直观的印象。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> a[] = <span class="string">&quot;areyoua&quot;</span>;</span><br><span class="line"><span class="keyword">char</span> b[] = <span class="string">&quot;areyou&quot;</span>;</span><br><span class="line">std::cout &lt;&lt; <span class="built_in">strcmp</span>(a, b) &lt;&lt; std::endl;</span><br><span class="line"></span><br><span class="line"><span class="keyword">char</span> c[] = <span class="string">&quot;areyou&quot;</span>;</span><br><span class="line"><span class="keyword">char</span> d[] = <span class="string">&quot;arfyou&quot;</span>;</span><br><span class="line">std::cout &lt;&lt; <span class="built_in">strcmp</span>(c, d) &lt;&lt; std::endl;</span><br><span class="line"></span><br><span class="line"><span class="keyword">char</span> e[] = <span class="string">&quot;areyou&quot;</span>;</span><br><span class="line"><span class="keyword">char</span> f[] = <span class="string">&quot;Areyou&quot;</span>;</span><br><span class="line">std::cout &lt;&lt; <span class="built_in">strcmp</span>(e, f) &lt;&lt; std::endl;</span><br><span class="line"></span><br><span class="line"><span class="keyword">char</span> g[] = <span class="string">&quot;areyou&quot;</span>;</span><br><span class="line"><span class="keyword">char</span> h[] = <span class="string">&quot;areyou&quot;</span>;</span><br><span class="line">std::cout &lt;&lt; <span class="built_in">strcmp</span>(e, f) &lt;&lt; std::endl;</span><br></pre></td></tr></table></figure>
-
-<p>以下为终端输出：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">97</span><br><span class="line">-1</span><br><span class="line">32</span><br><span class="line">0</span><br></pre></td></tr></table></figure>
-
+</tbody>
+</table>
+<h3 id="c风格字符串的比较">C风格字符串的比较</h3>
+<p>以下写一写关于C风格字符串的比较的法则，作为<code>strcmp()</code>函数的补充。</p>
+<p>字符串的比较是通过顺序比较其中的字符来进行的，首先比较两个字符串的第一个字符，如果不相等比较结束，否则继续比较两者的下一个字符，直到某个字符串结束。这个比较是针对字符的ASCII编码进行比较，ASCII大的字符大，ASCII小的字符小。以下可以通过几个例子有一个更加直观的印象。 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> a[] = <span class="string">&quot;areyoua&quot;</span>;</span><br><span class="line"><span class="keyword">char</span> b[] = <span class="string">&quot;areyou&quot;</span>;</span><br><span class="line">std::cout &lt;&lt; <span class="built_in">strcmp</span>(a, b) &lt;&lt; std::endl;</span><br><span class="line"></span><br><span class="line"><span class="keyword">char</span> c[] = <span class="string">&quot;areyou&quot;</span>;</span><br><span class="line"><span class="keyword">char</span> d[] = <span class="string">&quot;arfyou&quot;</span>;</span><br><span class="line">std::cout &lt;&lt; <span class="built_in">strcmp</span>(c, d) &lt;&lt; std::endl;</span><br><span class="line"></span><br><span class="line"><span class="keyword">char</span> e[] = <span class="string">&quot;areyou&quot;</span>;</span><br><span class="line"><span class="keyword">char</span> f[] = <span class="string">&quot;Areyou&quot;</span>;</span><br><span class="line">std::cout &lt;&lt; <span class="built_in">strcmp</span>(e, f) &lt;&lt; std::endl;</span><br><span class="line"></span><br><span class="line"><span class="keyword">char</span> g[] = <span class="string">&quot;areyou&quot;</span>;</span><br><span class="line"><span class="keyword">char</span> h[] = <span class="string">&quot;areyou&quot;</span>;</span><br><span class="line">std::cout &lt;&lt; <span class="built_in">strcmp</span>(e, f) &lt;&lt; std::endl;</span><br></pre></td></tr></table></figure></p>
+<p>以下为终端输出： <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">97</span><br><span class="line">-1</span><br><span class="line">32</span><br><span class="line">0</span><br></pre></td></tr></table></figure></p>
 <p>可以发现返回的值正是前一个字符串的依次的字符的ASCII码与后一个字符串的依次的字符的ASCII码的差值。</p>
 
       
@@ -369,15 +368,15 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">计算机</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">库函数</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">计算机</a>
         		</li>
       		
 		</ul>
@@ -485,7 +484,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#cctype%E5%BA%93"><span class="toc-number">1.</span> <span class="toc-text">cctype库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#cstring%E5%BA%93"><span class="toc-number">2.</span> <span class="toc-text">cstring库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#C%E9%A3%8E%E6%A0%BC%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%AF%94%E8%BE%83"><span class="toc-number">2.1.</span> <span class="toc-text">C风格字符串的比较</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#cctype%E5%BA%93"><span class="toc-number">1.</span> <span class="toc-text">cctype库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#cstring%E5%BA%93"><span class="toc-number">2.</span> <span class="toc-text">cstring库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#c%E9%A3%8E%E6%A0%BC%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%AF%94%E8%BE%83"><span class="toc-number">2.1.</span> <span class="toc-text">C风格字符串的比较</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -626,54 +625,6 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">历史</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">书</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">人物</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">密码</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">电影</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">蜡笔小新</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">技术</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">ubuntu</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">mendeley</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">问题解决</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">考研</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">数学</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">电力电子</a>
               </li>
              
@@ -686,47 +637,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">笔记</a>
+                <a href="javascript:void(0)" class="js-tag color3">历史</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">心得</a>
+                <a href="javascript:void(0)" class="js-tag color2">书</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">计算机</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">计算机语言</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">学习笔记</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">树莓派</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Eigen</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">SLAM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">C++</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">库函数</a>
+                <a href="javascript:void(0)" class="js-tag color3">人物</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -742,11 +661,91 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">C++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">库函数</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">计算机</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Eigen</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">SLAM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">考研</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">数学</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">笔记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">电影</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">蜡笔小新</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">计算机语言</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">学习笔记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">OpenCV</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">计算机视觉</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">技术</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">密码</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">树莓派</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">ubuntu</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">mendeley</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">问题解决</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">心得</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
             
             <div class="clearfix"></div>

@@ -8,12 +8,12 @@
   <link rel="dns-prefetch" href="http://aimafan.fans">
   <title>LLC | 艾玛FAN</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="未完成 本文详细介绍了LLC谐振变换器的组成，工作原理及其应用">
+  <meta name="description" content="未完成 &gt; 本文详细介绍了LLC谐振变换器的组成，工作原理及其应用">
 <meta property="og:type" content="article">
 <meta property="og:title" content="LLC">
 <meta property="og:url" content="http://aimafan.fans/2021/08/25/LLC/index.html">
 <meta property="og:site_name" content="艾玛FAN">
-<meta property="og:description" content="未完成 本文详细介绍了LLC谐振变换器的组成，工作原理及其应用">
+<meta property="og:description" content="未完成 &gt; 本文详细介绍了LLC谐振变换器的组成，工作原理及其应用">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://aimafan.fans/assets/blogimg/napoleon4/1.jpg">
 <meta property="og:image" content="http://aimafan.fans/assets/blogimg/napoleon4/2.jpg">
@@ -211,13 +211,9 @@
     <div class="article-entry" itemprop="articleBody">
       
         <ul>
-<li><strong>未完成</strong><blockquote>
-<p>本文详细介绍了LLC谐振变换器的组成，工作原理及其应用</p>
-</blockquote>
-</li>
+<li><strong>未完成</strong> &gt; 本文详细介绍了LLC谐振变换器的组成，工作原理及其应用</li>
 </ul>
 <span id="more"></span>
-
 <ul>
 <li><strong>本文主要基于参考资料，然后经过本人的理解最后成文，如果有任何错误的地方，盖本人学术不精所致，请友善的指出</strong></li>
 <li><strong>本文配图主要来源于网络与参考资料，如有侵权，请联系我</strong></li>
@@ -227,44 +223,38 @@
 <center>
 <img style="border-radius: 0.3125em;
 box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
-src="/assets/blogimg/napoleon4/1.jpg" width = "75%" alt=""/>
-<br>
+src="/assets/blogimg/napoleon4/1.jpg" width = "75%" alt=""/> <br>
 <div style="color:orange; border-bottom: 1px solid #d9d9d9;
 display: inline-block;
 color: #999;
 padding: 2px;">
-场效应管简化电路图
+<p>场效应管简化电路图</p>
 </div>
 </center>
-
 <p>解决这个问题之后，随着社会的发展，又出现一个新的问题。就是当前社会，对于设备小型化和轻型化都逐渐提出了更高的要求，而开关电源的高频化可以有效的解决这些问题。主要是因为开关电源频率越高，像变压器这类磁性元件的尺寸就可以更小。但是高频的同时也会带来许多问题，其中一个非常大的问题就是功率损耗。因为一般开关器件（指晶体管等）控制开通和关断时并不能瞬间进行，而要经过一段时间的电压和电流的上升和下降。当晶体管关断的时候，D，S之间没有电流通过，但是会存在一个比较大的电压；当晶体管开通，D，S之间导通，有电流流过，而电压变为了0V。所以当晶体管从关断到开通的一瞬间，电压下降，电流上升，就会导致在这个过程中出现功率损耗，晶体管从开通到关断的一瞬间亦然。</p>
 <center>
 <img style="border-radius: 0.3125em;
 box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
-src="/assets/blogimg/napoleon4/2.jpg" width = "75%" alt=""/>
-<br>
+src="/assets/blogimg/napoleon4/2.jpg" width = "75%" alt=""/> <br>
 <div style="color:orange; border-bottom: 1px solid #d9d9d9;
 display: inline-block;
 color: #999;
 padding: 2px;">
-开通损耗与关断损耗
+<p>开通损耗与关断损耗</p>
 </div>
 </center>
-
 <p>这时候就需要软开关技术，软开关技术有零电压开关（ZVS）和零电流开关（ZCS），这里只讲零电压开关技术。零电压开关也就是指在开关开通之前就让他的两端的电压变为0，这样开通损耗便可以降为0，但是关断损耗就无法避免了。</p>
 <center>
 <img style="border-radius: 0.3125em;
 box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
-src="/assets/blogimg/napoleon4/3.jpg" width = "75%" alt=""/>
-<br>
+src="/assets/blogimg/napoleon4/3.jpg" width = "75%" alt=""/> <br>
 <div style="color:orange; border-bottom: 1px solid #d9d9d9;
 display: inline-block;
 color: #999;
 padding: 2px;">
-零电压开关
+<p>零电压开关</p>
 </div>
 </center>
-
 <p>通过LLC谐振电路可以实现零电压开关，从而降低高频电源带来的开关损耗。但是在LLC谐振电路之前，还有一个重要概念，那便是什么是谐振电路。</p>
 <p>对于一个电路来说，最基础的电器元件无非就这几种，电阻，电感，电容。其中电阻仅仅是在数量上对于电压和电流实现阻碍，并不会对电路的整体频率产生影响。而电感和电容则不同，他们属于储能元件，他们的电抗大小与电源频率大小密切相关。电感对于高频电流有抑制作用，而电容对于低频电流有抑制作用，所以当他们同时存在与一个电路中时，在低频阶段整个电路会呈现容性，增益大小（输出电压/输入电压）会随着频率的增大而增大，而在高频阶段整个电路会呈现感性，增益大小会随着频率的增大而减小。</p>
 
@@ -575,54 +565,6 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">历史</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">书</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">人物</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">密码</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">电影</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">蜡笔小新</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">技术</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">ubuntu</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">mendeley</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">问题解决</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">考研</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">数学</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">电力电子</a>
               </li>
              
@@ -635,47 +577,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">笔记</a>
+                <a href="javascript:void(0)" class="js-tag color3">历史</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">心得</a>
+                <a href="javascript:void(0)" class="js-tag color2">书</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">计算机</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">计算机语言</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">学习笔记</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">树莓派</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Eigen</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">SLAM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">C++</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">库函数</a>
+                <a href="javascript:void(0)" class="js-tag color3">人物</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -691,11 +601,91 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">C++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">库函数</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">计算机</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Eigen</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">SLAM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">考研</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">数学</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">笔记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">电影</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">蜡笔小新</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">计算机语言</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">学习笔记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">OpenCV</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">计算机视觉</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">技术</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">密码</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">树莓派</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">ubuntu</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">mendeley</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">问题解决</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">心得</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
             
             <div class="clearfix"></div>

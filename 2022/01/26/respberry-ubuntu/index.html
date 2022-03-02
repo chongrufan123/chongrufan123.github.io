@@ -21,11 +21,11 @@
 <meta property="og:image" content="http://aimafan.fans/assets/blogimg/raspberry_ubuntu/20220126112942.png">
 <meta property="og:image" content="http://aimafan.fans/assets/blogimg/raspberry_ubuntu/20220125223411.png">
 <meta property="og:image" content="http://aimafan.fans/assets/blogimg/raspberry_ubuntu/333.jpg">
-<meta property="og:image" content="http://aimafan.fans/assets/blogimg/raspberry_ubuntu/ELQV8Z%25~8%25N5N%60A9ICZ_G0D.jpg">
+<meta property="og:image" content="http://aimafan.fans/assets/blogimg/raspberry_ubuntu/ELQV8Z%~8%N5N%60A9ICZ_G0D.jpg">
 <meta property="og:image" content="http://aimafan.fans/assets/blogimg/raspberry_ubuntu/444.jpg">
 <meta property="og:image" content="http://aimafan.fans/assets/blogimg/raspberry_ubuntu/222.jpg">
 <meta property="og:image" content="http://aimafan.fans/assets/blogimg/raspberry_ubuntu/111.jpg">
-<meta property="og:image" content="http://aimafan.fans/assets/blogimg/raspberry_ubuntu/C190A%256J_WGRYDX$%25%5D503SG.jpg">
+<meta property="og:image" content="http://aimafan.fans/assets/blogimg/raspberry_ubuntu/C190A%6J_WGRYDX$%%5D503SG.jpg">
 <meta property="og:image" content="http://aimafan.fans/assets/blogimg/raspberry_ubuntu/12-54-11.png">
 <meta property="og:image" content="http://aimafan.fans/assets/blogimg/raspberry_ubuntu/13-36-37.png">
 <meta property="og:image" content="http://aimafan.fans/assets/blogimg/raspberry_ubuntu/13-08-03.png">
@@ -39,8 +39,8 @@
 <meta property="article:modified_time" content="2022-01-27T03:10:53.171Z">
 <meta property="article:author" content="艾玛FAN">
 <meta property="article:tag" content="技术">
-<meta property="article:tag" content="ubuntu">
 <meta property="article:tag" content="树莓派">
+<meta property="article:tag" content="ubuntu">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://aimafan.fans/assets/blogimg/raspberry_ubuntu/20220125213946.png">
   
@@ -228,59 +228,23 @@
     <div class="article-entry" itemprop="articleBody">
       
         <blockquote>
-<p>本文介绍了从零开始，在树莓派上安装ubuntu操作系统的详细步骤，并且进行了初步配置。</p>
+<p>本文介绍了从零开始，在树莓派上安装ubuntu操作系统的详细步骤，并且进行了初步配置。 <span id="more"></span> - <strong>全文大约3000字</strong></p>
 </blockquote>
-<span id="more"></span>
-<ul>
-<li><strong>全文大约3000字</strong></li>
-</ul>
-<h2 id="1-基本介绍"><a href="#1-基本介绍" class="headerlink" title="1 基本介绍"></a>1 基本介绍</h2><p>树莓派(Raspberry Pi)是由英国树莓派基金会(Raspberry Pi Foundation)推出的一系列的用于”教育推广”产品的名称，开发这系列产品的主要目的是鼓励所有人都可以学习计算机技术，价格不算太高，配置的话作为一个学习用的服务器来说也够用了。从2012年开始到现在已经发布了很多款机型，最新发布的标准版是于2019年推出的Raspberry Pi 4B，保持了树莓派系列一贯的风格，轻便小巧而且接口齐全，尤其是电源口换成了type-c口(之前我记得好像是miniUSB口)，也不用再刻意为他准备一条电源线了。<br><img src="/assets/blogimg/raspberry_ubuntu/20220125213946.png"><br>一年前我买了一款Raspberry Pi 4B，也把玩了一段时间，最近在学习SLAM相关的内容，需要ubuntu的环境，如果开虚拟机的话配置有点不够，也不想要花钱开一个云服务器，所以继续把这一个树莓派拿出来，重新拷一个ubuntu的系统，也顺便将这个步骤全部记录下来，之后如果有需要的话也可以直接回看，会少踩很多坑。<br>我的树莓派内存2GB，tf卡64GB空间，预计安装操作系统为Ubuntu Desktop 21.10，当然其他的系统也大同小异。</p>
-<h2 id="2-烧录并安装系统"><a href="#2-烧录并安装系统" class="headerlink" title="2 烧录并安装系统"></a>2 烧录并安装系统</h2><p>树莓派支持的系统很多，官方提供的是Raspberry PI OS，也是linux的一个发行版，由于是官方提供的系统，对树莓派的支持也是最好的，但是因为用惯了ubuntu的系统，所以本次还是准备烧录ubuntu系统。以下是烧录系统的步骤：</p>
-<h3 id="2-1-烧录前准备工作"><a href="#2-1-烧录前准备工作" class="headerlink" title="2.1 烧录前准备工作"></a>2.1 烧录前准备工作</h3><ol>
-<li>准备一张tf卡<br> 类似于电脑中的硬盘，用来存放操作系统还有文件等等，建议的话至少需要大于8GB。</li>
-<li>下载SD卡格式化工具与系统烧录工具<br> 建议不要采用官方提供的烧录软件，因为在烧录前要下载ubuntu，而这个软件的服务器在英国，对于国内的用户来说，下载速度会奇慢。这里我采用的是SD卡格式化工具SD Memory Card Formatter (<a target="_blank" rel="noopener" href="https://www.sdcard.org/downloads/formatter/sd-memory-card-formatter-for-windows-download/">https://www.sdcard.org/downloads/formatter/sd-memory-card-formatter-for-windows-download/</a>) 和系统烧录工具Etcher (<a target="_blank" rel="noopener" href="https://www.balena.io/etcher/">https://www.balena.io/etcher/</a>) 就直接选择便携版就好，省的还要安装。</li>
-<li>下载ubuntu20.04-Desktop.img文件<br> 最开始的时候我是从国内的镜像网站下载iso文件，但是下载结束烧录之后发现无法启动树莓派，查阅相关资料发现iso格式的文件无法在tf卡烧录成功，或者是树莓派就不能烧录iso的文件，也有道理，对于电脑来说U盘是用来做一个安装引导的，但是tf卡的话是和文件系统在一起的。所以需要下载一个img的镜像文件，下载网址在这里 <a target="_blank" rel="noopener" href="https://ubuntu.com/download/raspberry-pi">https://ubuntu.com/download/raspberry-pi</a> 。没想到ubuntu的官网还有raspberry的专区。<br> 下载的话推荐用迅雷什么的，亲测用浏览器下载的话速度大概是500~1000KB/s，我用EagleGet下载速度可以达到3~4MB/s。<h3 id="2-2-系统烧录"><a href="#2-2-系统烧录" class="headerlink" title="2.2 系统烧录"></a>2.2 系统烧录</h3>将tf卡插入电脑，如果电脑没有tf卡槽的话(一般电脑都没有)可以买tf转SD或者tf转USB，淘宝上有很多的，挑一个便宜的买就好。<br>之后打开SD Memory Card Formatter，选择tf卡的盘符号，点击Format，格式化tf卡，如下图<br><img src="/assets/blogimg/raspberry_ubuntu/20220125221101.png"><br>然后打开Etcher，在映像文件中选择flash from file，然后选择刚刚下载完成的iso文件，之后点击select target，然后选择tf卡，最后点击flash，稍等几分钟tf系统盘就烤好了。<br><img src="/assets/blogimg/raspberry_ubuntu/20220125223353.png"><br><img src="/assets/blogimg/raspberry_ubuntu/20220126112942.png"><br>设备选择tf卡的盘符号，之后点击写入，稍等片刻，显示flash complateed，系统文件便写入到tf卡中了。<br><img src="/assets/blogimg/raspberry_ubuntu/20220125223411.png"><br>烧录成功之后，将tf卡插入到树莓派，插入电源，就可以运行了。</li>
-</ol>
-<h3 id="2-3-安装系统"><a href="#2-3-安装系统" class="headerlink" title="2.3 安装系统"></a>2.3 安装系统</h3><p>第一次开启的话推荐连接一个屏幕，比较方便进行一些初始设置。我记得当初买树莓派的时候是有附带一个miniHDMI转HDMI线的，直接借用一个屏幕然后连接就可以了，最好再连接一个有线的鼠标和键盘。<br>ubuntu的安装设置界面都很人性化的，跟着引导一步一步走就可以。<br>开启之后进入到选择语言的界面，选择简体中文，然后选择继续<br><img src="/assets/blogimg/raspberry_ubuntu/333.jpg"><br>之后是键盘布局，键盘布局的话就默认就好，English(US)，然后选择继续<br><img src="/assets/blogimg/raspberry_ubuntu/ELQV8Z%25~8%25N5N%60A9ICZ_G0D.jpg"><br>然后连接wifi，输入密码便可以连接成功，然后选择继续<br><img src="/assets/blogimg/raspberry_ubuntu/444.jpg"><br>时区选择上海时区，然后选择继续<br><img src="/assets/blogimg/raspberry_ubuntu/222.jpg"><br>之后的话是登陆界面设置，输入姓名，然后会自动填充计算机名和用户名，推荐的话就按照填充的就好，不需要更改，然后输入密码，密码可以随意输入(但是必须要记住)，如果不符合要求系统会提示密码强度不符合，但是无所谓，root用户对于这个计算机系统具有最高的控制权。然后选择继续<br><img src="/assets/blogimg/raspberry_ubuntu/111.jpg"><br>进入安装界面，稍等片刻<br><img src="/assets/blogimg/raspberry_ubuntu/C190A%256J_WGRYDX$%25%5D503SG.jpg"><br>之后便可以正式进入到ubuntu系统</p>
-<h2 id="3-系统配置"><a href="#3-系统配置" class="headerlink" title="3 系统配置"></a>3 系统配置</h2><p>进入ubuntu的桌面，整个ubuntu系统还是很漂亮的，它还可以变得更加漂亮，网上有大量的关于ubuntu的美化教程，但是我建议最好不要将大量时间花费在ubuntu的美化上，毕竟这只是一个用来学习的系统而已。<br>下面进行ubuntu系统的一些配置</p>
-<h3 id="3-1-更换软件源"><a href="#3-1-更换软件源" class="headerlink" title="3.1 更换软件源"></a>3.1 更换软件源</h3><p>首先使用快捷键<code>ctrl+Alt+t</code>打开一个终端，或者也可以直接用鼠标右键打开一个终端，然后将软件源文件做一个备份，在选择文件的时候可以使用tab键来快速匹配。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo cp /etc/apt/sources.list /etc/apt/sources.list.back</span><br></pre></td></tr></table></figure>
-<p>之后使用vim对源进行编辑</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/apt/sources.list</span><br></pre></td></tr></table></figure>
-<p>此时发现还没有安装vim命令<br><img src="/assets/blogimg/raspberry_ubuntu/12-54-11.png"><br>所以首先使用以下命令安装vim</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install vim</span><br></pre></td></tr></table></figure>
-<p>等待安装结束之后便可以使用vim对文件进行编辑了，输入以下指令</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/apt/sources.list</span><br></pre></td></tr></table></figure>
-<p>之后进入vim预览的界面，键盘上的<code>h</code>, <code>j</code>, <code>k</code>, <code>l</code>键分别对应光标向“左”，“下”，“上”，“右”走，在文件开头先按<code>d</code>，再按<code>G</code>键可以将文档的内容全部删掉(注意大小写)。vim属于Linux基本操作中必须掌握的一个文本编辑器，也不需要掌握多么高深，只需要会基本的操作就好。同样，最好不要花费太多时间在vim的配置上，毕竟这只是一个文本编辑的工具。<br>可以在终端输入vimtutor，进入vim的自带教程当中，大概30分钟时间便可以对vim有一个基本的掌握。<br>在ubuntu中打开浏览器，ubuntu中默认安装火狐浏览器，在网址栏输入 <a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/help/ubuntu-ports/">https://mirrors.tuna.tsinghua.edu.cn/help/ubuntu-ports/</a> ，这是清华大学的一个源，可以用其他源，速度基本差不了多少。<br><img src="/assets/blogimg/raspberry_ubuntu/13-36-37.png"><br>选择自己的ubuntu版本，之后将下面方框中的内容全部复制，然后在刚刚的空白的终端界面中点击右键进行粘贴<br><img src="/assets/blogimg/raspberry_ubuntu/13-08-03.png"><br>然后进行保存和退出，按下键盘的<code>:</code>，输入<code>wq</code>，按回车。</p>
-<p>最后更新源，在终端中输入以下指令，第一个指令是更新源，第二个指令是更新软件</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt upgrade</span><br></pre></td></tr></table></figure>
-<p>之后输入以下指令，安装一下G++的编译包，其中包括GNU编辑器集合，GNU调试器，和其他编译软件所必需的开发库和工具，顺便检测一下更换源之后的安装速度，亲测速度大概能达到3MB/s左右，基本上可以满足需求</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install build-essential</span><br></pre></td></tr></table></figure>
-<p>测试一下安装是否成功，输入以下指令，查看g++的版本</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">g++ -v</span><br></pre></td></tr></table></figure>
-<h3 id="3-2-远程连接树莓派"><a href="#3-2-远程连接树莓派" class="headerlink" title="3.2 远程连接树莓派"></a>3.2 远程连接树莓派</h3><p>树莓派虽然便携，但是如果要一直加一个屏幕、一个鼠标、一个键盘的话也没有显现出树莓派作为服务器的目的来。<br>最普遍的方法是通过ssh远程连接树莓派，然后直接在电脑上对树莓派进行操作。</p>
-<h4 id="3-2-1-工具准备"><a href="#3-2-1-工具准备" class="headerlink" title="3.2.1 工具准备"></a>3.2.1 工具准备</h4><p>首先需要一个远程连接工具，我用的是putty软件，一个开源的远程连接的工具(下载地址: <a target="_blank" rel="noopener" href="https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html">https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html</a> )。之后还有一个文件传输的软件，我选择的是WinSCP(下载地址: <a target="_blank" rel="noopener" href="https://winscp.net/download/">https://winscp.net/download/</a> )。全部下载并安装。</p>
-<h4 id="3-2-2-固定IP地址"><a href="#3-2-2-固定IP地址" class="headerlink" title="3.2.2 固定IP地址"></a>3.2.2 固定IP地址</h4><p>在树莓派的终端中输入指令<code>ifconfig</code>，这是一个查询当前网络状况的指令，但是执行之后显示没有找到这个指令，并且系统推荐安装一个小程序<br><img src="/assets/blogimg/raspberry_ubuntu/14-27-35.png"><br>于是按照推荐的以下指令进行安装</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install net-tools</span><br></pre></td></tr></table></figure>
-<p>之后便可以正常执行<code>ifconfig</code>指令。此时会出现三个接口，分别是eth0, lo, wlan0，含义分别如下</p>
-<ul>
-<li>eth0：以太网接口</li>
-<li>lo：本地</li>
-<li>wlan0：无线网接口<br>我们的树莓派是通过无线网与笔记本电脑组成一个局域网的，所以我们只需要关注wlan0这一个接口，记住此处的inet，netmask和broadcast的值，之后会有用处<br><img src="/assets/blogimg/raspberry_ubuntu/18-12-20.png"><br>以我的这个主机为例，通过观察可以知道我的树莓派的ip地址是192.168.0.101，为了让这个ip地址固定下来，可以修改一下配置文件，输入如下指令<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /etc/netplan</span><br><span class="line">ls</span><br></pre></td></tr></table></figure>
-如果此处有其他yaml文件的话，将这些文件重命名为.yaml.bak文件，也即做个备份，如下<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mv xxx.yaml xxx.yaml.bak</span><br></pre></td></tr></table></figure>
-然后创建一个文件，也即<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim 01-netcfg.yaml</span><br></pre></td></tr></table></figure>
-然后在其中输入如下内容<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">network:</span></span><br><span class="line">  <span class="attr">version:</span> <span class="number">2</span></span><br><span class="line">  <span class="attr">renderer:</span> <span class="string">NetworkManager</span></span><br><span class="line">  <span class="attr">ethernets:</span></span><br><span class="line">    <span class="attr">wlan0:</span></span><br><span class="line">	  <span class="attr">addresses:</span> [<span class="string">此时的ip地址/掩码</span>]</span><br><span class="line">	  <span class="attr">gateway4:</span> <span class="string">网关</span></span><br><span class="line">	  <span class="attr">dhcp4:</span> <span class="literal">no</span></span><br></pre></td></tr></table></figure>
-如我这个配置的话设置便是如下<br><img src="/assets/blogimg/raspberry_ubuntu/19-38-45.png"><br>此处的掩码与上面的netmask有关，如果是255.255.255.0的话掩码就是24，即将这个数字化为二进制后1的数目，然后网关即上面的broadcast。<br>之后更新一下。<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo netplan apply</span><br></pre></td></tr></table></figure>
-最后重新启动树莓派，再次打开之后如果ip地址没有变的话即成功。</li>
-</ul>
-<h4 id="3-2-3-打开ssh"><a href="#3-2-3-打开ssh" class="headerlink" title="3.2.3 打开ssh"></a>3.2.3 打开ssh</h4><p>首先安装ssh-server，输入如下指令</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install openssh-server</span><br></pre></td></tr></table></figure>
-<p>之后检查是否打开了ssh服务，输入如下指令</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -e |grep ssh</span><br></pre></td></tr></table></figure>
-<p>如果输出的结果中有sshd的话说明ssh已经成功打开，否则的话可以启动一下</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/init.d/ssh start</span><br></pre></td></tr></table></figure>
-<p>如此，ssh服务便正式启动了。</p>
-<h4 id="3-2-4-远程连接服务器"><a href="#3-2-4-远程连接服务器" class="headerlink" title="3.2.4 远程连接服务器"></a>3.2.4 远程连接服务器</h4><p>此时我们便可以将树莓派脱离屏幕、鼠标和键盘了，推荐将树莓派用网线连接到路由器，当然干脆什么都不连接也可以，总之要保证树莓派和笔记本电脑处于同一局域网下。<br>打开笔记本电脑中的putty软件<br><img src="/assets/blogimg/raspberry_ubuntu/20220126184246.png"><br>在ip address中输入树莓派的ip地址，默认端口是22，在这里也可以将这个ip地址保存下来，之后的话就不用每回都输入ip地址了。<br>点击open，然后选择access，然后便进入登录界面，输入用户名和密码即可远程连接到树莓派，另外由于保护隐私，输入密码的时候不会显示出来，只管输入就好<br><img src="/assets/blogimg/raspberry_ubuntu/20220126184440.png"><br>同时为了在笔记本电脑和树莓派之间传递文件，需要用到WinSCP，打开这个软件，出现这样的界面<br><img src="/assets/blogimg/raspberry_ubuntu/20220126193341.png"><br>输入主机名，用户名和密码，然后点击登录便可以连接到树莓派，与树莓派进行文件的交换。<br>如此，在树莓派上对于ubuntu系统的配置已经远程连接便全部完成了。</p>
+<h2 id="基本介绍">1 基本介绍</h2>
+<p>树莓派(Raspberry Pi)是由英国树莓派基金会(Raspberry Pi Foundation)推出的一系列的用于"教育推广"产品的名称，开发这系列产品的主要目的是鼓励所有人都可以学习计算机技术，价格不算太高，配置的话作为一个学习用的服务器来说也够用了。从2012年开始到现在已经发布了很多款机型，最新发布的标准版是于2019年推出的Raspberry Pi 4B，保持了树莓派系列一贯的风格，轻便小巧而且接口齐全，尤其是电源口换成了type-c口(之前我记得好像是miniUSB口)，也不用再刻意为他准备一条电源线了。 <img src="/assets/blogimg/raspberry_ubuntu/20220125213946.png" /> 一年前我买了一款Raspberry Pi 4B，也把玩了一段时间，最近在学习SLAM相关的内容，需要ubuntu的环境，如果开虚拟机的话配置有点不够，也不想要花钱开一个云服务器，所以继续把这一个树莓派拿出来，重新拷一个ubuntu的系统，也顺便将这个步骤全部记录下来，之后如果有需要的话也可以直接回看，会少踩很多坑。 我的树莓派内存2GB，tf卡64GB空间，预计安装操作系统为Ubuntu Desktop 21.10，当然其他的系统也大同小异。</p>
+<h2 id="烧录并安装系统">2 烧录并安装系统</h2>
+<p>树莓派支持的系统很多，官方提供的是Raspberry PI OS，也是linux的一个发行版，由于是官方提供的系统，对树莓派的支持也是最好的，但是因为用惯了ubuntu的系统，所以本次还是准备烧录ubuntu系统。以下是烧录系统的步骤： ### 2.1 烧录前准备工作 1. 准备一张tf卡 类似于电脑中的硬盘，用来存放操作系统还有文件等等，建议的话至少需要大于8GB。 2. 下载SD卡格式化工具与系统烧录工具 建议不要采用官方提供的烧录软件，因为在烧录前要下载ubuntu，而这个软件的服务器在英国，对于国内的用户来说，下载速度会奇慢。这里我采用的是SD卡格式化工具SD Memory Card Formatter (https://www.sdcard.org/downloads/formatter/sd-memory-card-formatter-for-windows-download/) 和系统烧录工具Etcher (https://www.balena.io/etcher/) 就直接选择便携版就好，省的还要安装。 3. 下载ubuntu20.04-Desktop.img文件 最开始的时候我是从国内的镜像网站下载iso文件，但是下载结束烧录之后发现无法启动树莓派，查阅相关资料发现iso格式的文件无法在tf卡烧录成功，或者是树莓派就不能烧录iso的文件，也有道理，对于电脑来说U盘是用来做一个安装引导的，但是tf卡的话是和文件系统在一起的。所以需要下载一个img的镜像文件，下载网址在这里 https://ubuntu.com/download/raspberry-pi 。没想到ubuntu的官网还有raspberry的专区。 下载的话推荐用迅雷什么的，亲测用浏览器下载的话速度大概是500~1000KB/s，我用EagleGet下载速度可以达到3~4MB/s。 ### 2.2 系统烧录 将tf卡插入电脑，如果电脑没有tf卡槽的话(一般电脑都没有)可以买tf转SD或者tf转USB，淘宝上有很多的，挑一个便宜的买就好。 之后打开SD Memory Card Formatter，选择tf卡的盘符号，点击Format，格式化tf卡，如下图 <img src="/assets/blogimg/raspberry_ubuntu/20220125221101.png" /> 然后打开Etcher，在映像文件中选择flash from file，然后选择刚刚下载完成的iso文件，之后点击select target，然后选择tf卡，最后点击flash，稍等几分钟tf系统盘就烤好了。 <img src="/assets/blogimg/raspberry_ubuntu/20220125223353.png" /> <img src="/assets/blogimg/raspberry_ubuntu/20220126112942.png" /> 设备选择tf卡的盘符号，之后点击写入，稍等片刻，显示flash complateed，系统文件便写入到tf卡中了。 <img src="/assets/blogimg/raspberry_ubuntu/20220125223411.png" /> 烧录成功之后，将tf卡插入到树莓派，插入电源，就可以运行了。</p>
+<h3 id="安装系统">2.3 安装系统</h3>
+<p>第一次开启的话推荐连接一个屏幕，比较方便进行一些初始设置。我记得当初买树莓派的时候是有附带一个miniHDMI转HDMI线的，直接借用一个屏幕然后连接就可以了，最好再连接一个有线的鼠标和键盘。 ubuntu的安装设置界面都很人性化的，跟着引导一步一步走就可以。 开启之后进入到选择语言的界面，选择简体中文，然后选择继续 <img src="/assets/blogimg/raspberry_ubuntu/333.jpg" /> 之后是键盘布局，键盘布局的话就默认就好，English(US)，然后选择继续 <img src="/assets/blogimg/raspberry_ubuntu/ELQV8Z%~8%N5N%60A9ICZ_G0D.jpg" /> 然后连接wifi，输入密码便可以连接成功，然后选择继续 <img src="/assets/blogimg/raspberry_ubuntu/444.jpg" /> 时区选择上海时区，然后选择继续 <img src="/assets/blogimg/raspberry_ubuntu/222.jpg" /> 之后的话是登陆界面设置，输入姓名，然后会自动填充计算机名和用户名，推荐的话就按照填充的就好，不需要更改，然后输入密码，密码可以随意输入(但是必须要记住)，如果不符合要求系统会提示密码强度不符合，但是无所谓，root用户对于这个计算机系统具有最高的控制权。然后选择继续 <img src="/assets/blogimg/raspberry_ubuntu/111.jpg" /> 进入安装界面，稍等片刻 <img src="/assets/blogimg/raspberry_ubuntu/C190A%6J_WGRYDX$%%5D503SG.jpg" /> 之后便可以正式进入到ubuntu系统</p>
+<h2 id="系统配置">3 系统配置</h2>
+<p>进入ubuntu的桌面，整个ubuntu系统还是很漂亮的，它还可以变得更加漂亮，网上有大量的关于ubuntu的美化教程，但是我建议最好不要将大量时间花费在ubuntu的美化上，毕竟这只是一个用来学习的系统而已。 下面进行ubuntu系统的一些配置 ### 3.1 更换软件源 首先使用快捷键<code>ctrl+Alt+t</code>打开一个终端，或者也可以直接用鼠标右键打开一个终端，然后将软件源文件做一个备份，在选择文件的时候可以使用tab键来快速匹配。 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo cp /etc/apt/sources.list /etc/apt/sources.list.back</span><br></pre></td></tr></table></figure> 之后使用vim对源进行编辑 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/apt/sources.list</span><br></pre></td></tr></table></figure> 此时发现还没有安装vim命令 <img src="/assets/blogimg/raspberry_ubuntu/12-54-11.png" /> 所以首先使用以下命令安装vim <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install vim</span><br></pre></td></tr></table></figure> 等待安装结束之后便可以使用vim对文件进行编辑了，输入以下指令 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/apt/sources.list</span><br></pre></td></tr></table></figure> 之后进入vim预览的界面，键盘上的<code>h</code>, <code>j</code>, <code>k</code>, <code>l</code>键分别对应光标向“左”，“下”，“上”，“右”走，在文件开头先按<code>d</code>，再按<code>G</code>键可以将文档的内容全部删掉(注意大小写)。vim属于Linux基本操作中必须掌握的一个文本编辑器，也不需要掌握多么高深，只需要会基本的操作就好。同样，最好不要花费太多时间在vim的配置上，毕竟这只是一个文本编辑的工具。 可以在终端输入vimtutor，进入vim的自带教程当中，大概30分钟时间便可以对vim有一个基本的掌握。 在ubuntu中打开浏览器，ubuntu中默认安装火狐浏览器，在网址栏输入 https://mirrors.tuna.tsinghua.edu.cn/help/ubuntu-ports/ ，这是清华大学的一个源，可以用其他源，速度基本差不了多少。 <img src="/assets/blogimg/raspberry_ubuntu/13-36-37.png" /> 选择自己的ubuntu版本，之后将下面方框中的内容全部复制，然后在刚刚的空白的终端界面中点击右键进行粘贴 <img src="/assets/blogimg/raspberry_ubuntu/13-08-03.png" /> 然后进行保存和退出，按下键盘的<code>:</code>，输入<code>wq</code>，按回车。</p>
+<p>最后更新源，在终端中输入以下指令，第一个指令是更新源，第二个指令是更新软件 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt upgrade</span><br></pre></td></tr></table></figure> 之后输入以下指令，安装一下G++的编译包，其中包括GNU编辑器集合，GNU调试器，和其他编译软件所必需的开发库和工具，顺便检测一下更换源之后的安装速度，亲测速度大概能达到3MB/s左右，基本上可以满足需求 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install build-essential</span><br></pre></td></tr></table></figure> 测试一下安装是否成功，输入以下指令，查看g++的版本 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">g++ -v</span><br></pre></td></tr></table></figure> ### 3.2 远程连接树莓派 树莓派虽然便携，但是如果要一直加一个屏幕、一个鼠标、一个键盘的话也没有显现出树莓派作为服务器的目的来。 最普遍的方法是通过ssh远程连接树莓派，然后直接在电脑上对树莓派进行操作。 #### 3.2.1 工具准备 首先需要一个远程连接工具，我用的是putty软件，一个开源的远程连接的工具(下载地址: https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html )。之后还有一个文件传输的软件，我选择的是WinSCP(下载地址: https://winscp.net/download/ )。全部下载并安装。</p>
+<h4 id="固定ip地址">3.2.2 固定IP地址</h4>
+<p>在树莓派的终端中输入指令<code>ifconfig</code>，这是一个查询当前网络状况的指令，但是执行之后显示没有找到这个指令，并且系统推荐安装一个小程序 <img src="/assets/blogimg/raspberry_ubuntu/14-27-35.png" /> 于是按照推荐的以下指令进行安装 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install net-tools</span><br></pre></td></tr></table></figure> 之后便可以正常执行<code>ifconfig</code>指令。此时会出现三个接口，分别是eth0, lo, wlan0，含义分别如下 - eth0：以太网接口 - lo：本地 - wlan0：无线网接口 我们的树莓派是通过无线网与笔记本电脑组成一个局域网的，所以我们只需要关注wlan0这一个接口，记住此处的inet，netmask和broadcast的值，之后会有用处 <img src="/assets/blogimg/raspberry_ubuntu/18-12-20.png" /> 以我的这个主机为例，通过观察可以知道我的树莓派的ip地址是192.168.0.101，为了让这个ip地址固定下来，可以修改一下配置文件，输入如下指令 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /etc/netplan</span><br><span class="line">ls</span><br></pre></td></tr></table></figure> 如果此处有其他yaml文件的话，将这些文件重命名为.yaml.bak文件，也即做个备份，如下 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mv xxx.yaml xxx.yaml.bak</span><br></pre></td></tr></table></figure> 然后创建一个文件，也即 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim 01-netcfg.yaml</span><br></pre></td></tr></table></figure> 然后在其中输入如下内容 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">network:</span></span><br><span class="line">  <span class="attr">version:</span> <span class="number">2</span></span><br><span class="line">  <span class="attr">renderer:</span> <span class="string">NetworkManager</span></span><br><span class="line">  <span class="attr">ethernets:</span></span><br><span class="line">    <span class="attr">wlan0:</span></span><br><span class="line">	  <span class="attr">addresses:</span> [<span class="string">此时的ip地址/掩码</span>]</span><br><span class="line">	  <span class="attr">gateway4:</span> <span class="string">网关</span></span><br><span class="line">	  <span class="attr">dhcp4:</span> <span class="literal">no</span></span><br></pre></td></tr></table></figure> 如我这个配置的话设置便是如下 <img src="/assets/blogimg/raspberry_ubuntu/19-38-45.png" /> 此处的掩码与上面的netmask有关，如果是255.255.255.0的话掩码就是24，即将这个数字化为二进制后1的数目，然后网关即上面的broadcast。 之后更新一下。 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo netplan apply</span><br></pre></td></tr></table></figure> 最后重新启动树莓派，再次打开之后如果ip地址没有变的话即成功。</p>
+<h4 id="打开ssh">3.2.3 打开ssh</h4>
+<p>首先安装ssh-server，输入如下指令 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install openssh-server</span><br></pre></td></tr></table></figure> 之后检查是否打开了ssh服务，输入如下指令 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -e |grep ssh</span><br></pre></td></tr></table></figure> 如果输出的结果中有sshd的话说明ssh已经成功打开，否则的话可以启动一下 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/init.d/ssh start</span><br></pre></td></tr></table></figure> 如此，ssh服务便正式启动了。</p>
+<h4 id="远程连接服务器">3.2.4 远程连接服务器</h4>
+<p>此时我们便可以将树莓派脱离屏幕、鼠标和键盘了，推荐将树莓派用网线连接到路由器，当然干脆什么都不连接也可以，总之要保证树莓派和笔记本电脑处于同一局域网下。 打开笔记本电脑中的putty软件 <img src="/assets/blogimg/raspberry_ubuntu/20220126184246.png" /> 在ip address中输入树莓派的ip地址，默认端口是22，在这里也可以将这个ip地址保存下来，之后的话就不用每回都输入ip地址了。 点击open，然后选择access，然后便进入登录界面，输入用户名和密码即可远程连接到树莓派，另外由于保护隐私，输入密码的时候不会显示出来，只管输入就好 <img src="/assets/blogimg/raspberry_ubuntu/20220126184440.png" /> 同时为了在笔记本电脑和树莓派之间传递文件，需要用到WinSCP，打开这个软件，出现这样的界面 <img src="/assets/blogimg/raspberry_ubuntu/20220126193341.png" /> 输入主机名，用户名和密码，然后点击登录便可以连接到树莓派，与树莓派进行文件的交换。 如此，在树莓派上对于ubuntu系统的配置已经远程连接便全部完成了。</p>
 
       
       
@@ -336,11 +300,11 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">ubuntu</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">树莓派</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">树莓派</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">ubuntu</a>
         		</li>
       		
 		</ul>
@@ -448,7 +412,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.</span> <span class="toc-text">1 基本介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E7%83%A7%E5%BD%95%E5%B9%B6%E5%AE%89%E8%A3%85%E7%B3%BB%E7%BB%9F"><span class="toc-number">2.</span> <span class="toc-text">2 烧录并安装系统</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E7%83%A7%E5%BD%95%E5%89%8D%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 烧录前准备工作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E7%B3%BB%E7%BB%9F%E7%83%A7%E5%BD%95"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 系统烧录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-%E5%AE%89%E8%A3%85%E7%B3%BB%E7%BB%9F"><span class="toc-number">2.3.</span> <span class="toc-text">2.3 安装系统</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E7%B3%BB%E7%BB%9F%E9%85%8D%E7%BD%AE"><span class="toc-number">3.</span> <span class="toc-text">3 系统配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-%E6%9B%B4%E6%8D%A2%E8%BD%AF%E4%BB%B6%E6%BA%90"><span class="toc-number">3.1.</span> <span class="toc-text">3.1 更换软件源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E6%A0%91%E8%8E%93%E6%B4%BE"><span class="toc-number">3.2.</span> <span class="toc-text">3.2 远程连接树莓派</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-1-%E5%B7%A5%E5%85%B7%E5%87%86%E5%A4%87"><span class="toc-number">3.2.1.</span> <span class="toc-text">3.2.1 工具准备</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-2-%E5%9B%BA%E5%AE%9AIP%E5%9C%B0%E5%9D%80"><span class="toc-number">3.2.2.</span> <span class="toc-text">3.2.2 固定IP地址</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-3-%E6%89%93%E5%BC%80ssh"><span class="toc-number">3.2.3.</span> <span class="toc-text">3.2.3 打开ssh</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-4-%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-number">3.2.4.</span> <span class="toc-text">3.2.4 远程连接服务器</span></a></li></ol></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.</span> <span class="toc-text">1 基本介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%83%A7%E5%BD%95%E5%B9%B6%E5%AE%89%E8%A3%85%E7%B3%BB%E7%BB%9F"><span class="toc-number">2.</span> <span class="toc-text">2 烧录并安装系统</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E7%B3%BB%E7%BB%9F"><span class="toc-number">2.1.</span> <span class="toc-text">2.3 安装系统</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E9%85%8D%E7%BD%AE"><span class="toc-number">3.</span> <span class="toc-text">3 系统配置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9B%BA%E5%AE%9Aip%E5%9C%B0%E5%9D%80"><span class="toc-number">3.0.1.</span> <span class="toc-text">3.2.2 固定IP地址</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%89%93%E5%BC%80ssh"><span class="toc-number">3.0.2.</span> <span class="toc-text">3.2.3 打开ssh</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-number">3.0.3.</span> <span class="toc-text">3.2.4 远程连接服务器</span></a></li></ol></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -589,54 +553,6 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">历史</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">书</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">人物</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">密码</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">电影</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">蜡笔小新</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">技术</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">ubuntu</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">mendeley</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">问题解决</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">考研</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">数学</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">电力电子</a>
               </li>
              
@@ -649,47 +565,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">笔记</a>
+                <a href="javascript:void(0)" class="js-tag color3">历史</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">心得</a>
+                <a href="javascript:void(0)" class="js-tag color2">书</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">计算机</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">计算机语言</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">学习笔记</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">树莓派</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Eigen</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">SLAM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">C++</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">库函数</a>
+                <a href="javascript:void(0)" class="js-tag color3">人物</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -705,11 +589,91 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">C++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">库函数</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">计算机</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Eigen</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">SLAM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">考研</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">数学</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">笔记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">电影</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">蜡笔小新</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">计算机语言</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">学习笔记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">OpenCV</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">计算机视觉</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">技术</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">密码</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">树莓派</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">ubuntu</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">mendeley</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">问题解决</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">心得</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
             
             <div class="clearfix"></div>

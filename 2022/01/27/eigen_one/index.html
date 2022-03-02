@@ -207,102 +207,88 @@
     <div class="article-entry" itemprop="articleBody">
       
         <blockquote>
-<p>本文介绍了eigen的安装，头文件库，还有一些入门的矩阵向量操作</p>
+<p>本文介绍了eigen的安装，头文件库，还有一些入门的矩阵向量操作 <span id="more"></span> - <strong>全文大约1200字</strong> 参考内容：<a target="_blank" rel="noopener" href="http://eigen.tuxfamily.org/dox-devel/modules.html">Eigen tutorial</a> 操作环境：Ubuntu server 20.04 ## 1 Eigen是什么 Eigen是一个C++语言中的开源的模板库，支持线性代数的运算，包括向量运算，矩阵运算，数值分析等相关算法。因为eigen只包含头文件，所以使用的话不需要进行编译，只需要在cpp文件开头写<code>#include &lt;Eigen&gt;</code>就好。</p>
 </blockquote>
-<span id="more"></span>
-<ul>
-<li><strong>全文大约1200字</strong><blockquote>
-<p>参考内容：<a target="_blank" rel="noopener" href="http://eigen.tuxfamily.org/dox-devel/modules.html">Eigen tutorial</a><br>操作环境：Ubuntu server 20.04</p>
-</blockquote>
-<h2 id="1-Eigen是什么"><a href="#1-Eigen是什么" class="headerlink" title="1 Eigen是什么"></a>1 Eigen是什么</h2>Eigen是一个C++语言中的开源的模板库，支持线性代数的运算，包括向量运算，矩阵运算，数值分析等相关算法。因为eigen只包含头文件，所以使用的话不需要进行编译，只需要在cpp文件开头写<code>#include &lt;Eigen&gt;</code>就好。</li>
-</ul>
-<h2 id="2-如何安装eigen"><a href="#2-如何安装eigen" class="headerlink" title="2 如何安装eigen"></a>2 如何安装eigen</h2><p>本文只演示在ubuntu系统下eigen的安装过程，有两种安装方式</p>
-<h3 id="2-1-使用终端apt命令安装"><a href="#2-1-使用终端apt命令安装" class="headerlink" title="2.1 使用终端apt命令安装"></a>2.1 使用终端apt命令安装</h3><p>直接在apt软件包中安装</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install libeigen3-dev</span><br></pre></td></tr></table></figure>
-<p>这种安装方式有一个缺点，因为apt包更新比较慢，安装的版本可能不是最新版，那么之后的一些依赖于eigen的库可能没有办法使用(如Sophus库要求必须选用3.3以上版本的eigen包)，可以使用指令来查看apt包中eigen的版本</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt show libeigen3-dev</span><br></pre></td></tr></table></figure>
-<h3 id="2-2-手动编译安装"><a href="#2-2-手动编译安装" class="headerlink" title="2.2 手动编译安装"></a>2.2 手动编译安装</h3><p>在<a target="_blank" rel="noopener" href="http://eigen.tuxfamily.org/index.php?title=Main_Page">官网</a>中下载最新版安装包，然后提取到某处，之后进入提取出来的文件夹，在终端中打开，然后进行编译</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mkdir build</span><br><span class="line"><span class="built_in">cd</span> build</span><br><span class="line">cmake ..</span><br><span class="line">sudo install make</span><br></pre></td></tr></table></figure>
-<p>最后检查是否安装成功，可以直接在编辑器中输入</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;Eigen&gt;</span></span></span><br></pre></td></tr></table></figure>
-<p>编译通过即安装成功。</p>
-<h2 id="3-模块与头文件"><a href="#3-模块与头文件" class="headerlink" title="3 模块与头文件"></a>3 模块与头文件</h2><table>
+<h2 id="如何安装eigen">2 如何安装eigen</h2>
+<p>本文只演示在ubuntu系统下eigen的安装过程，有两种安装方式 ### 2.1 使用终端apt命令安装 直接在apt软件包中安装 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install libeigen3-dev</span><br></pre></td></tr></table></figure> 这种安装方式有一个缺点，因为apt包更新比较慢，安装的版本可能不是最新版，那么之后的一些依赖于eigen的库可能没有办法使用(如Sophus库要求必须选用3.3以上版本的eigen包)，可以使用指令来查看apt包中eigen的版本 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt show libeigen3-dev</span><br></pre></td></tr></table></figure> ### 2.2 手动编译安装 在<a target="_blank" rel="noopener" href="http://eigen.tuxfamily.org/index.php?title=Main_Page">官网</a>中下载最新版安装包，然后提取到某处，之后进入提取出来的文件夹，在终端中打开，然后进行编译 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mkdir build</span><br><span class="line"><span class="built_in">cd</span> build</span><br><span class="line">cmake ..</span><br><span class="line">sudo install make</span><br></pre></td></tr></table></figure> 最后检查是否安装成功，可以直接在编辑器中输入 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;Eigen&gt;</span></span></span><br></pre></td></tr></table></figure> 编译通过即安装成功。</p>
+<h2 id="模块与头文件">3 模块与头文件</h2>
+<table>
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 29%" />
+<col style="width: 60%" />
+</colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th>模块</th>
 <th>头文件</th>
 <th>内容</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr class="odd">
 <td>Core</td>
 <td><code>#include &lt;Eigen/Core&gt;</code></td>
 <td>矩阵和数组(向量)类(Matrix, Array)，基于线性代数还有数组操作</td>
 </tr>
-<tr>
+<tr class="even">
 <td>Geometry</td>
 <td><code>#include &lt;Eigen/Geometry&gt;</code></td>
 <td>变换，平移，缩放，2D旋转和3D旋转(包括四元数和角轴)</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>LU</td>
 <td><code>#include &lt;Eigen/LU&gt;</code></td>
 <td>使用求解器进行求逆，行列式，LU分解操作</td>
 </tr>
-<tr>
+<tr class="even">
 <td>Cholesky</td>
 <td><code>#include &lt;Eigen/Cholesky&gt;</code></td>
 <td>使用求解器进行LLT, LT, Cholesky分解</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>Householder</td>
 <td><code>#include &lt;Eigen/Householder&gt;</code></td>
 <td>Householder变换；被用作几个线性代数模块</td>
 </tr>
-<tr>
+<tr class="even">
 <td>SVD</td>
 <td><code>#include &lt;Eigen/SVD&gt;</code></td>
 <td>SVD分解与最小二乘求解器</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>QR</td>
 <td><code>#include &lt;Eigen/QR&gt;</code></td>
 <td>QR分解</td>
 </tr>
-<tr>
+<tr class="even">
 <td>Eigenvalues</td>
 <td><code>#include &lt;Eigen/Eigenvalues&gt;</code></td>
 <td>特征值，特征向量分解</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>Sparse</td>
 <td><code>#include &lt;Eigen/Sparse&gt;</code></td>
 <td>稀疏矩阵存储以及相关的基本线性代数</td>
 </tr>
-<tr>
+<tr class="even">
 <td>Dense</td>
 <td><code>#include &lt;Eigen/Dense&gt;</code></td>
 <td>包括Core, Geometry, LU, Cholesky, SVD, QR, Eigenvalues的头文件</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>Eigen</td>
 <td><code>#include &lt;Eigen/Eigen&gt;</code></td>
 <td>包括Dense和Sparse的头文件</td>
 </tr>
-</tbody></table>
-<h2 id="4-实例演示"><a href="#4-实例演示" class="headerlink" title="4 实例演示"></a>4 实例演示</h2><h3 id="4-1-例一：矩阵"><a href="#4-1-例一：矩阵" class="headerlink" title="4.1 例一：矩阵"></a>4.1 例一：矩阵</h3><p>在编辑器中输入以下程序</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// hello_eigen.cpp</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;eigen3/Eigen/Dense&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> Eigen::MatrixXd;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="function">MatrixXd <span class="title">m</span><span class="params">(<span class="number">2</span>,<span class="number">2</span>)</span></span>;</span><br><span class="line">	<span class="built_in">m</span>(<span class="number">0</span>,<span class="number">0</span>) = <span class="number">3</span>;</span><br><span class="line">	<span class="built_in">m</span>(<span class="number">1</span>,<span class="number">0</span>) = <span class="number">2.5</span>;</span><br><span class="line">	<span class="built_in">m</span>(<span class="number">0</span>,<span class="number">1</span>) = <span class="number">-1</span>;</span><br><span class="line">	<span class="built_in">m</span>(<span class="number">1</span>,<span class="number">1</span>) = <span class="built_in">m</span>(<span class="number">1</span>,<span class="number">0</span>) + <span class="built_in">m</span>(<span class="number">0</span>,<span class="number">1</span>);</span><br><span class="line">	std::cout &lt;&lt; m &lt;&lt; std::endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="4-1-2-编译并运行"><a href="#4-1-2-编译并运行" class="headerlink" title="4.1.2 编译并运行"></a>4.1.2 编译并运行</h4><p>在终端输入编译指令，并运行</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">g++ hello_eigen.cpp -o hello_eigen</span><br><span class="line">./hello_eigen</span><br></pre></td></tr></table></figure>
-<p>得到输出结果，如果不出意外的话应该是</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">3 -1</span><br><span class="line">2.5 1.5</span><br></pre></td></tr></table></figure>
-<h4 id="4-1-3-解释这个程序"><a href="#4-1-3-解释这个程序" class="headerlink" title="4.1.3 解释这个程序"></a>4.1.3 解释这个程序</h4><p>Eigen头文件定义了许多类型，但是对于简单的应用程序，只使用MatrixXd类型可能就足够了。MatrixXd表示任意大小的矩阵(对应MatrixXd中的X)，然后矩阵中的每个元素都是双精度的(对应MatrixXd中的d)。<br>其他的一些类型也大同小异，基本可以通过类型名来进行判断，如MatrixXf, Matrix3D什么的，分别表示任意大小的单精度型的矩阵和三行三列的双精度型的方阵。当然也可以直接通过Matrix来进行定义，如<code>Matrix &lt;doubel, 3, 3&gt; matrix_3d;</code><br>对于以上的程序来说，首先包含了头文件Dense，基本包含了矩阵的基本操作，之后定义了一个2*2的矩阵，并分别进行赋值，最后输出。</p>
-<h3 id="4-2-例二：矩阵和向量"><a href="#4-2-例二：矩阵和向量" class="headerlink" title="4.2 例二：矩阵和向量"></a>4.2 例二：矩阵和向量</h3><h4 id="4-2-1-矩阵和向量"><a href="#4-2-1-矩阵和向量" class="headerlink" title="4.2.1 矩阵和向量"></a>4.2.1 矩阵和向量</h4><p>在编辑器中输入如下程序</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;Eigen/Dense&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> Eigen::MatrixXd;</span><br><span class="line"><span class="keyword">using</span> Eigen::VectorXd;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	MatrixXd m = MatrixXd::<span class="built_in">Random</span>(<span class="number">3</span>,<span class="number">3</span>);</span><br><span class="line">	m = (m + MatrixXd::<span class="built_in">Constant</span>(<span class="number">3</span>,<span class="number">3</span>,<span class="number">1.2</span>)) * <span class="number">50</span>;</span><br><span class="line">	std::cout &lt;&lt; <span class="string">&quot;m =&quot;</span> &lt;&lt; std::endl &lt;&lt; m &lt;&lt; std::endl;</span><br><span class="line">	<span class="function">VectorXd <span class="title">v</span><span class="params">(<span class="number">3</span>)</span></span>;</span><br><span class="line">	v &lt;&lt; <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>;</span><br><span class="line">	std::cout &lt;&lt; <span class="string">&quot;m * v =&quot;</span> &lt;&lt; std::endl &lt;&lt; m * v &lt;&lt; std::endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="4-2-2-编译并运行"><a href="#4-2-2-编译并运行" class="headerlink" title="4.2.2 编译并运行"></a>4.2.2 编译并运行</h4><p>与上述指令一样，进行编译并运行，得到输出结果</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">m =</span><br><span class="line">94.0188  89.844 43.5223</span><br><span class="line">49.4383 101.165  86.823</span><br><span class="line">88.3099 29.7551 37.7775</span><br><span class="line"></span><br><span class="line">m * v =</span><br><span class="line">404.274</span><br><span class="line">512.237</span><br><span class="line">261.153</span><br></pre></td></tr></table></figure>
-<h4 id="4-2-3-解释这个程序"><a href="#4-2-3-解释这个程序" class="headerlink" title="4.2.3 解释这个程序"></a>4.2.3 解释这个程序</h4><p>这个例子中首先定义了一个随机的3*3的双精度的矩阵，这个随机的数字是在-1到1之间，然后将这个矩阵加上一个所有元素都为1.2的3*3的常数矩阵，这样输出出来的数据便是m，输出出来。<br>之后又定义了一个三维的双精度向量，使用VectorXd类型，与MatrixXd类型相似，X表示随机定义向量的维度，d表示元素为双精度的。之后将矩阵和向量进行相乘，得出最终结果。矩阵和向量的乘法在线性代数中有学习，这里就不多赘述了，这里的乘法是利用了C++的重载的概念，可以用一种方便的方法去完成这个计算。</p>
-<h2 id="5-总结"><a href="#5-总结" class="headerlink" title="5 总结"></a>5 总结</h2><p>本文介绍了Eigen的基本介绍，安装，头文件介绍，还有一些简单的程序介绍，之后的话会有更多的关于Eigen的更加全面的介绍。</p>
+</tbody>
+</table>
+<h2 id="实例演示">4 实例演示</h2>
+<h3 id="例一矩阵">4.1 例一：矩阵</h3>
+<p>在编辑器中输入以下程序 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// hello_eigen.cpp</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;eigen3/Eigen/Dense&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> Eigen::MatrixXd;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="function">MatrixXd <span class="title">m</span><span class="params">(<span class="number">2</span>,<span class="number">2</span>)</span></span>;</span><br><span class="line">	<span class="built_in">m</span>(<span class="number">0</span>,<span class="number">0</span>) = <span class="number">3</span>;</span><br><span class="line">	<span class="built_in">m</span>(<span class="number">1</span>,<span class="number">0</span>) = <span class="number">2.5</span>;</span><br><span class="line">	<span class="built_in">m</span>(<span class="number">0</span>,<span class="number">1</span>) = <span class="number">-1</span>;</span><br><span class="line">	<span class="built_in">m</span>(<span class="number">1</span>,<span class="number">1</span>) = <span class="built_in">m</span>(<span class="number">1</span>,<span class="number">0</span>) + <span class="built_in">m</span>(<span class="number">0</span>,<span class="number">1</span>);</span><br><span class="line">	std::cout &lt;&lt; m &lt;&lt; std::endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> #### 4.1.2 编译并运行 在终端输入编译指令，并运行 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">g++ hello_eigen.cpp -o hello_eigen</span><br><span class="line">./hello_eigen</span><br></pre></td></tr></table></figure> 得到输出结果，如果不出意外的话应该是 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">3 -1</span><br><span class="line">2.5 1.5</span><br></pre></td></tr></table></figure> #### 4.1.3 解释这个程序 Eigen头文件定义了许多类型，但是对于简单的应用程序，只使用MatrixXd类型可能就足够了。MatrixXd表示任意大小的矩阵(对应MatrixXd中的X)，然后矩阵中的每个元素都是双精度的(对应MatrixXd中的d)。 其他的一些类型也大同小异，基本可以通过类型名来进行判断，如MatrixXf, Matrix3D什么的，分别表示任意大小的单精度型的矩阵和三行三列的双精度型的方阵。当然也可以直接通过Matrix来进行定义，如<code>Matrix &lt;doubel, 3, 3&gt; matrix_3d;</code> 对于以上的程序来说，首先包含了头文件Dense，基本包含了矩阵的基本操作，之后定义了一个2*2的矩阵，并分别进行赋值，最后输出。</p>
+<h3 id="例二矩阵和向量">4.2 例二：矩阵和向量</h3>
+<h4 id="矩阵和向量">4.2.1 矩阵和向量</h4>
+<p>在编辑器中输入如下程序 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;Eigen/Dense&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> Eigen::MatrixXd;</span><br><span class="line"><span class="keyword">using</span> Eigen::VectorXd;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	MatrixXd m = MatrixXd::<span class="built_in">Random</span>(<span class="number">3</span>,<span class="number">3</span>);</span><br><span class="line">	m = (m + MatrixXd::<span class="built_in">Constant</span>(<span class="number">3</span>,<span class="number">3</span>,<span class="number">1.2</span>)) * <span class="number">50</span>;</span><br><span class="line">	std::cout &lt;&lt; <span class="string">&quot;m =&quot;</span> &lt;&lt; std::endl &lt;&lt; m &lt;&lt; std::endl;</span><br><span class="line">	<span class="function">VectorXd <span class="title">v</span><span class="params">(<span class="number">3</span>)</span></span>;</span><br><span class="line">	v &lt;&lt; <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>;</span><br><span class="line">	std::cout &lt;&lt; <span class="string">&quot;m * v =&quot;</span> &lt;&lt; std::endl &lt;&lt; m * v &lt;&lt; std::endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> #### 4.2.2 编译并运行 与上述指令一样，进行编译并运行，得到输出结果 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">m =</span><br><span class="line">94.0188  89.844 43.5223</span><br><span class="line">49.4383 101.165  86.823</span><br><span class="line">88.3099 29.7551 37.7775</span><br><span class="line"></span><br><span class="line">m * v =</span><br><span class="line">404.274</span><br><span class="line">512.237</span><br><span class="line">261.153</span><br></pre></td></tr></table></figure> #### 4.2.3 解释这个程序 这个例子中首先定义了一个随机的3*3的双精度的矩阵，这个随机的数字是在-1到1之间，然后将这个矩阵加上一个所有元素都为1.2的3*3的常数矩阵，这样输出出来的数据便是m，输出出来。 之后又定义了一个三维的双精度向量，使用VectorXd类型，与MatrixXd类型相似，X表示随机定义向量的维度，d表示元素为双精度的。之后将矩阵和向量进行相乘，得出最终结果。矩阵和向量的乘法在线性代数中有学习，这里就不多赘述了，这里的乘法是利用了C++的重载的概念，可以用一种方便的方法去完成这个计算。 ## 5 总结 本文介绍了Eigen的基本介绍，安装，头文件介绍，还有一些简单的程序介绍，之后的话会有更多的关于Eigen的更加全面的介绍。</p>
 
       
       
@@ -470,7 +456,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Eigen%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-number">1.</span> <span class="toc-text">1 Eigen是什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%A6%82%E4%BD%95%E5%AE%89%E8%A3%85eigen"><span class="toc-number">2.</span> <span class="toc-text">2 如何安装eigen</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E4%BD%BF%E7%94%A8%E7%BB%88%E7%AB%AFapt%E5%91%BD%E4%BB%A4%E5%AE%89%E8%A3%85"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 使用终端apt命令安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E6%89%8B%E5%8A%A8%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 手动编译安装</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E6%A8%A1%E5%9D%97%E4%B8%8E%E5%A4%B4%E6%96%87%E4%BB%B6"><span class="toc-number">3.</span> <span class="toc-text">3 模块与头文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E5%AE%9E%E4%BE%8B%E6%BC%94%E7%A4%BA"><span class="toc-number">4.</span> <span class="toc-text">4 实例演示</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-%E4%BE%8B%E4%B8%80%EF%BC%9A%E7%9F%A9%E9%98%B5"><span class="toc-number">4.1.</span> <span class="toc-text">4.1 例一：矩阵</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1-2-%E7%BC%96%E8%AF%91%E5%B9%B6%E8%BF%90%E8%A1%8C"><span class="toc-number">4.1.1.</span> <span class="toc-text">4.1.2 编译并运行</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1-3-%E8%A7%A3%E9%87%8A%E8%BF%99%E4%B8%AA%E7%A8%8B%E5%BA%8F"><span class="toc-number">4.1.2.</span> <span class="toc-text">4.1.3 解释这个程序</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-%E4%BE%8B%E4%BA%8C%EF%BC%9A%E7%9F%A9%E9%98%B5%E5%92%8C%E5%90%91%E9%87%8F"><span class="toc-number">4.2.</span> <span class="toc-text">4.2 例二：矩阵和向量</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-1-%E7%9F%A9%E9%98%B5%E5%92%8C%E5%90%91%E9%87%8F"><span class="toc-number">4.2.1.</span> <span class="toc-text">4.2.1 矩阵和向量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-2-%E7%BC%96%E8%AF%91%E5%B9%B6%E8%BF%90%E8%A1%8C"><span class="toc-number">4.2.2.</span> <span class="toc-text">4.2.2 编译并运行</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-3-%E8%A7%A3%E9%87%8A%E8%BF%99%E4%B8%AA%E7%A8%8B%E5%BA%8F"><span class="toc-number">4.2.3.</span> <span class="toc-text">4.2.3 解释这个程序</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E6%80%BB%E7%BB%93"><span class="toc-number">5.</span> <span class="toc-text">5 总结</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E5%AE%89%E8%A3%85eigen"><span class="toc-number">1.</span> <span class="toc-text">2 如何安装eigen</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E5%9D%97%E4%B8%8E%E5%A4%B4%E6%96%87%E4%BB%B6"><span class="toc-number">2.</span> <span class="toc-text">3 模块与头文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E4%BE%8B%E6%BC%94%E7%A4%BA"><span class="toc-number">3.</span> <span class="toc-text">4 实例演示</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BE%8B%E4%B8%80%E7%9F%A9%E9%98%B5"><span class="toc-number">3.1.</span> <span class="toc-text">4.1 例一：矩阵</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BE%8B%E4%BA%8C%E7%9F%A9%E9%98%B5%E5%92%8C%E5%90%91%E9%87%8F"><span class="toc-number">3.2.</span> <span class="toc-text">4.2 例二：矩阵和向量</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%9F%A9%E9%98%B5%E5%92%8C%E5%90%91%E9%87%8F"><span class="toc-number">3.2.1.</span> <span class="toc-text">4.2.1 矩阵和向量</span></a></li></ol></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -611,54 +597,6 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">历史</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">书</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">人物</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">密码</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">电影</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">蜡笔小新</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">技术</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">ubuntu</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">mendeley</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">问题解决</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">考研</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">数学</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">电力电子</a>
               </li>
              
@@ -671,47 +609,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">笔记</a>
+                <a href="javascript:void(0)" class="js-tag color3">历史</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">心得</a>
+                <a href="javascript:void(0)" class="js-tag color2">书</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">计算机</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">计算机语言</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">学习笔记</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">树莓派</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Eigen</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">SLAM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">C++</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">库函数</a>
+                <a href="javascript:void(0)" class="js-tag color3">人物</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -727,11 +633,91 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">C++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">库函数</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">计算机</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Eigen</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">SLAM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">考研</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">数学</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">笔记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">电影</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">蜡笔小新</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">计算机语言</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">学习笔记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">OpenCV</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">计算机视觉</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">技术</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">密码</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">树莓派</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">ubuntu</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">mendeley</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">问题解决</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">心得</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
             
             <div class="clearfix"></div>
